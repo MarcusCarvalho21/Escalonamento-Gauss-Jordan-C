@@ -1,0 +1,1 @@
+# Esconamento Gauss Jordan em C
