@@ -4,6 +4,7 @@
 int numeroLinhas = 0;
 int numeroColunas = 0;
 
+#Função que imprime a matriz
 void imprimeMatriz(float a[][numeroColunas]){
 	
 	int i = 0;
@@ -20,12 +21,16 @@ void imprimeMatriz(float a[][numeroColunas]){
 	
 }
 
+#Função principal
 int main(){
 	
 	setlocale(LC_ALL,"Portuguese");
 	
 	int i = 0;
 	int j = 0;
+	int k = 0;
+	float pivo = 0;
+	float pivo2 = 0;
 	
 	printf("Informe o número de linhas: ");
 	scanf(" %d", &numeroLinhas);
@@ -37,6 +42,7 @@ int main(){
 
 	float matriz[numeroLinhas][numeroColunas];
 	
+	#Laços para inserir valores na matriz
 	for(i = 0; i < numeroLinhas; i++){
 		for(j = 0; j < numeroColunas; j++){
 			if(j == (numeroColunas - 1)){
@@ -54,20 +60,32 @@ int main(){
 	
 	system("pause");
 	
-	float pivo2 = matriz[1][0]; 
-	for(i = 1; i < numeroLinhas; i++){
-		float pivo = matriz[0][0];
-		float pivo2 = matriz[i][0];
+	#Lacos para zera os valores abaixo da diagonal principal
+	for(k = 0; k < numeroLinhas; k++){
+	
+		for(i = k+1; i < numeroLinhas; i++){
+			pivo = matriz[k][k];
+			pivo2 = matriz[i][k];
 		
-		for(j = 0; j < numeroColunas; j++){
+			for(j = 0; j < numeroColunas; j++){
 	
-			matriz[i][j] = ((pivo * matriz[i][j]) - (pivo2 * matriz[0][j]));
+				matriz[i][j] = ((pivo * matriz[i][j]) - (pivo2 * matriz[k][j]));
 	
+			}	
 		}
-	
 	}
 	
+	system("pause");
+	imprimeMatriz(matriz);	
 	
+	#Laço para tornar os valores da diagonal principal um
+	for(i = 0; i < numeroLinhas; i++){
+		pivo = matriz[i][i];
+		for(j = 0; j < numeroColunas; j++){
+			matriz[i][j] = matriz[i][j]/pivo;
+		}
+	}
+		
 	imprimeMatriz(matriz);
 	
 	printf("o linhas %d e colunas %d", numeroLinhas, numeroColunas);
