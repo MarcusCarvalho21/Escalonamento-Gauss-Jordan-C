@@ -40,6 +40,7 @@ int main(){
 	
 	numeroColunas +=1;
 
+	//Definindo a matriz
 	float matriz[numeroLinhas][numeroColunas];
 	
 	//Laços para inserir valores na matriz
@@ -56,17 +57,21 @@ int main(){
 		printf("\n");
 	} 
 	
+	//Funcao para imprimir a matriz
 	imprimeMatriz(matriz);
 	
 	system("pause");
 	
 	//Lacos para zera os valores abaixo da diagonal principal
+	//K serve para definir o pivo
 	for(k = 0; k < numeroLinhas; k++){
 
+		//i serve para percorrer as linhas 
 		for(i = k+1; i < numeroLinhas; i++){
 			pivo = matriz[k][k];
 			pivo2 = matriz[i][k];
 		
+			//j serve para percorrer as colunas
 			for(j = 0; j < numeroColunas; j++){
 	
 				matriz[i][j] = ((pivo * matriz[i][j]) - (pivo2 * matriz[k][j]));
@@ -77,17 +82,39 @@ int main(){
 	
 	imprimeMatriz(matriz);	
 	system("pause");
+	
 	//Laço para tornar os valores da diagonal principal um
+	//i para percorrer as linhas
 	for(i = 0; i < numeroLinhas; i++){
 		pivo = matriz[i][i];
+		
+		//j para percorrer as colunas
 		for(j = 0; j < numeroColunas; j++){
 			matriz[i][j] = matriz[i][j]/pivo;
 		}
 	}
 		
 	imprimeMatriz(matriz);
+
+	//Laco para zerar diagonal superior
+	//K serve para definir o pivor	
+	for(k = numeroColunas - 2; k > 0; k--){
+
+		//i para percorrer as linhas
+		for(i = k-1; i >= 0; i--){
+			pivo = matriz[k][k];
+			pivo2 = matriz[i][k];
+		
+			//j para percorrer as colunas 
+			for(j = numeroColunas - 1; j >= 0; j--){
 	
-	printf("o linhas %d e colunas %d", numeroLinhas, numeroColunas);
+				matriz[i][j] = ((pivo * matriz[i][j]) - (pivo2 * matriz[k][j]));
+	
+			}	
+		}
+	}
+	system("pause");
+	imprimeMatriz(matriz);
 	
 	return 0;
 }
