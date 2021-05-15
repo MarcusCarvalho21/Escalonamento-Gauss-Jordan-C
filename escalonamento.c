@@ -62,7 +62,7 @@ int main(){
 	
 	//Lacos para zera os valores abaixo da diagonal principal
 	for(k = 0; k < numeroLinhas; k++){
-	
+
 		for(i = k+1; i < numeroLinhas; i++){
 			pivo = matriz[k][k];
 			pivo2 = matriz[i][k];
