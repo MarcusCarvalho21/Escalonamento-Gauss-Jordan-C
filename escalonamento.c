@@ -4,7 +4,7 @@
 int numeroLinhas = 0;
 int numeroColunas = 0;
 
-#Função que imprime a matriz
+//Função que imprime a matriz
 void imprimeMatriz(float a[][numeroColunas]){
 	
 	int i = 0;
@@ -21,7 +21,7 @@ void imprimeMatriz(float a[][numeroColunas]){
 	
 }
 
-#Função principal
+//Função principal
 int main(){
 	
 	setlocale(LC_ALL,"Portuguese");
@@ -42,7 +42,7 @@ int main(){
 
 	float matriz[numeroLinhas][numeroColunas];
 	
-	#Laços para inserir valores na matriz
+	//Laços para inserir valores na matriz
 	for(i = 0; i < numeroLinhas; i++){
 		for(j = 0; j < numeroColunas; j++){
 			if(j == (numeroColunas - 1)){
@@ -60,7 +60,7 @@ int main(){
 	
 	system("pause");
 	
-	#Lacos para zera os valores abaixo da diagonal principal
+	//Lacos para zera os valores abaixo da diagonal principal
 	for(k = 0; k < numeroLinhas; k++){
 	
 		for(i = k+1; i < numeroLinhas; i++){
@@ -75,10 +75,9 @@ int main(){
 		}
 	}
 	
-	system("pause");
 	imprimeMatriz(matriz);	
-	
-	#Laço para tornar os valores da diagonal principal um
+	system("pause");
+	//Laço para tornar os valores da diagonal principal um
 	for(i = 0; i < numeroLinhas; i++){
 		pivo = matriz[i][i];
 		for(j = 0; j < numeroColunas; j++){
