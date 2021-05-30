@@ -21,6 +21,9 @@ void imprimeMatriz(float a[][numeroColunas]){
 	
 }
 
+//Função que substitui as linhas caso o pivor seja 0
+//void substituiLinhas
+
 //Função principal
 int main(){
 	
@@ -29,6 +32,7 @@ int main(){
 	int i = 0;
 	int j = 0;
 	int k = 0;
+	int m = 0;
 	float pivo = 0;
 	float pivo2 = 0;
 	
@@ -42,6 +46,7 @@ int main(){
 
 	//Definindo a matriz
 	float matriz[numeroLinhas][numeroColunas];
+	float vetorAuxiliar[numeroColunas];
 	
 	//Laços para inserir valores na matriz
 	for(i = 0; i < numeroLinhas; i++){
@@ -66,11 +71,30 @@ int main(){
 	//K serve para definir o pivo
 	for(k = 0; k < numeroLinhas; k++){
 
+		pivo = matriz[k][k];
+			
+		//Verifica se o pivor é igual a zero
+		if(pivo == 0){
+			for(m = 0; m < numeroColunas; m++){
+					
+				vetorAuxiliar[m] = matriz[k][m];
+					
+				matriz[k][m] = matriz[k+1][m];
+				
+				matriz[k+1][m] = vetorAuxiliar[m];
+				
+				pivo = matriz[k][k];
+					
+				imprimeMatriz(matriz);
+				
+			}
+		}
+
 		//i serve para percorrer as linhas 
 		for(i = k+1; i < numeroLinhas; i++){
-			pivo = matriz[k][k];
+			
 			pivo2 = matriz[i][k];
-		
+			
 			//j serve para percorrer as colunas
 			for(j = 0; j < numeroColunas; j++){
 	
